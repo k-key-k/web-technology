@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">Список задач</header>
+    <div class="main-container">
+        <div class="task-input">
+            <h2>Новая задача</h2>
+            <div class="input-container">
+                <input type="text" placeholder="Название задачи...">
+                <button>+ Добавить</button>
+            </div>
+        </div>
+        <div class="task-sections">
+            <div class="task-column backlog">
+                <h3>Бэклог</h3>
+                <div class="task backlog">Выучить JS</div>
+                <div class="task backlog">Выучить React</div>
+                <div class="task backlog">Сделать домашку</div>
+            </div>
+            <div class="task-column in-progress">
+                <h3>В процессе</h3>
+                <div class="task in-progress">Выпить смузи</div>
+                <div class="task in-progress">Попить воды</div>
+            </div>
+            <div class="task-column done">
+                <h3>Готово</h3>
+                <div class="task done">Позвонить маме</div>
+                <div class="task done">Погладить кота</div>
+            </div>
+            <div class="task-column trash">
+                <h3>Корзина</h3>
+                <div class="task trash">Сходить погулять</div>
+                <div class="task trash">Прочитать Войну и Мир</div>
+                <button class="clear-btn">Х Очистить</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
