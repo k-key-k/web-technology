@@ -6,64 +6,17 @@
     <title>Список задач</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <header-section>
-        <header class="header">
-            Список задач
-        </header>
-    </header-section>
-
+<body class="board-app">
+    
     <main class="main-container">
         <section class="task-input">
-            <h2>Новая задача</h2>
-            <form class="input-container">
-                <label for="task-name" class="visually-hidden">Введите название задачи</label>
-                <input type="text" id="task-name" placeholder="Название задачи..." aria-label="Введите название задачи">
-                <button type="submit" aria-label="Добавить задачу">+ Добавить</button>
-            </form>
+            
         </section>
 
         <section class="task-sections">
-            <article class="task-column backlog">
-                <h3>Бэклог</h3>
-                <ul role="list">
-                    <li class="task" data-status="backlog">Выучить JS</li>
-                    <li class="task" data-status="backlog">Выучить React</li>
-                    <li class="task" data-status="backlog">Сделать домашку</li>
-                </ul>
-            </article>
-
-            <article class="task-column in-progress">
-                <h3>В процессе</h3>
-                <ul role="list">
-                    <li class="task" data-status="in-progress">Выпить смузи</li>
-                    <li class="task" data-status="in-progress">Попить воды</li>
-                </ul>
-            </article>
-
-            <article class="task-column done">
-                <h3>Готово</h3>
-                <ul role="list">
-                    <li class="task" data-status="done">Позвонить маме</li>
-                    <li class="task" data-status="done">Погладить кота</li>
-                </ul>
-            </article>
-
-            <aside class="task-column trash">
-                <h3>Корзина</h3>
-                <ul role="list">
-                    <li class="task" data-status="trash">Сходить погулять</li>
-                    <li class="task" data-status="trash">Прочитать "Войну и Мир"</li>
-                </ul>
-                <form>
-                    <button type="submit" class="clear-btn">Х Очистить</button>
-                </form>
-            </aside>
+            
         </section>
     </main>
-    
-    <template id="task-template">
-        <li class="task" data-status=""></li>
-    </template>
+    <script src="src/main.js" type="module"></script>    
 </body>
 </html>
