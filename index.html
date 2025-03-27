@@ -3,44 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вафин Айзат Айратович</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header">Список задач</header>
-    <div class="main-container">
-        <div class="task-input">
+    <header-section>
+        <header class="header">
+            Список задач
+        </header>
+    </header-section>
+
+    <main class="main-container">
+        <section class="task-input">
             <h2>Новая задача</h2>
-            <div class="input-container">
-                <input type="text" placeholder="Название задачи...">
-                <button>+ Добавить</button>
-            </div>
-        </div>
-        <div class="task-sections">
-            <div class="task-column backlog">
+            <form class="input-container">
+                <label for="task-name" class="visually-hidden">Введите название задачи</label>
+                <input type="text" id="task-name" placeholder="Название задачи..." aria-label="Введите название задачи">
+                <button type="submit" aria-label="Добавить задачу">+ Добавить</button>
+            </form>
+        </section>
+
+        <section class="task-sections">
+            <article class="task-column backlog">
                 <h3>Бэклог</h3>
-                <div class="task backlog">Выучить JS</div>
-                <div class="task backlog">Выучить React</div>
-                <div class="task backlog">Сделать домашку</div>
-            </div>
-            <div class="task-column in-progress">
+                <ul role="list">
+                    <li class="task" data-status="backlog">Выучить JS</li>
+                    <li class="task" data-status="backlog">Выучить React</li>
+                    <li class="task" data-status="backlog">Сделать домашку</li>
+                </ul>
+            </article>
+
+            <article class="task-column in-progress">
                 <h3>В процессе</h3>
-                <div class="task in-progress">Выпить смузи</div>
-                <div class="task in-progress">Попить воды</div>
-            </div>
-            <div class="task-column done">
+                <ul role="list">
+                    <li class="task" data-status="in-progress">Выпить смузи</li>
+                    <li class="task" data-status="in-progress">Попить воды</li>
+                </ul>
+            </article>
+
+            <article class="task-column done">
                 <h3>Готово</h3>
-                <div class="task done">Позвонить маме</div>
-                <div class="task done">Погладить кота</div>
-            </div>
-            <div class="task-column trash">
+                <ul role="list">
+                    <li class="task" data-status="done">Позвонить маме</li>
+                    <li class="task" data-status="done">Погладить кота</li>
+                </ul>
+            </article>
+
+            <aside class="task-column trash">
                 <h3>Корзина</h3>
-                <div class="task trash">Сходить погулять</div>
-                <div class="task trash">Прочитать Войну и Мир</div>
-                <button class="clear-btn">Х Очистить</button>
-            </div>
-        </div>
-    </div>
+                <ul role="list">
+                    <li class="task" data-status="trash">Сходить погулять</li>
+                    <li class="task" data-status="trash">Прочитать "Войну и Мир"</li>
+                </ul>
+                <form>
+                    <button type="submit" class="clear-btn">Х Очистить</button>
+                </form>
+            </aside>
+        </section>
+    </main>
+    
+    <template id="task-template">
+        <li class="task" data-status=""></li>
+    </template>
 </body>
 </html>
-
