@@ -125,18 +125,74 @@ ul {
     padding: 0;
 }
 
-.task {
+.taskboard__item {
     padding: 25px;
-    margin: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
+    margin: 20px 0px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
-.task[data-status="backlog"] { background: linear-gradient(to right, #b0b0b0 1%, #ffffff 1%); }
-.task[data-status="in-progress"] { background: linear-gradient(to right, #6ea8fe 1%, #ffffff 1%); }
-.task[data-status="done"] { background: linear-gradient(to right, #76c893 1%, #ffffff 1%); }
-.task[data-status="trash"] { background: linear-gradient(to right, #e57373 1%, #ffffff 1%); }
+.taskboard__item.task--backlog {
+    background-color: #f5f5f5;
+    border-left: 5px solid #707070;
+}
+
+.taskboard__item.task--in-progress {
+    background-color: #f5f5f5;
+    border-left: 5px solid #0056b3;
+}
+
+.taskboard__item.task--done {
+    background-color: #f5f5f5;
+    border-left: 5px solid #2e7d32;
+}
+
+.taskboard__item.task--trash {
+    background-color: #f5f5f5;
+    border-left: 5px solid #b71c1c;
+}
+
+.task__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    list-style: none;
+    flex-grow: 1;
+}
+
+.task_edit-input {
+    width: 100%;
+    margin-top: 5px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: none;
+}
+
+.text__edit {
+    width: 20px;
+    height: 20px;
+    background: url('../src/img/svg/edit-icon.svg') no-repeat center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 35%;
+}
+
+.taskboard__item:hover .text__edit {
+    display: block;
+}
 
 .clear-btn {
     display: block;
@@ -148,6 +204,10 @@ ul {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+}
+
+.clear-btn:hover {
+    background-color: #cc0000;
 }
 
 @media (max-width: 768px) {

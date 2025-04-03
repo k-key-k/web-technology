@@ -1,26 +1,13 @@
 import { createElement } from "../framework/render.js";
 
 function createTaskTableComponentTemplate(boardName, boardClass) {
-    if (boardClass == "trash") {
-        return (
-            `
-                <aside class="task-column ${boardClass}">
-                    <h3>${boardName}</h3>                    
-                    <form>
-                        <button type="submit" class="clear-btn">Х Очистить</button>
-                    </form>
-                </aside>
-            `
-        );
-    } else {
-        return (
-            `
-                <article class="task-column ${boardClass}">
-                    <h3>${boardName}</h3>
-                </article>
-            `
-        );
-    }
+    return (
+        `
+            <article class="task-column ${boardClass}">
+                <h3>${boardName}</h3>
+            </article>
+        `
+    );
 }
 
 export default class TaskTableComponent {

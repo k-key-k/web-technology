@@ -1,22 +1,28 @@
 import { createElement } from "../framework/render.js";
 
-function createTaskComponentTemplate(taskName, taskClass) {
+function createTaskComponentTemplate(task) {
+    
+    const {title, status} = task;
     return (
         `
-            <li class="task" data-status="${taskClass}">${taskName}</li>
+        <div class="taskboard__item task task--${status}">
+            <div class="task__body">
+                <li class="task">${title}</li>  
+                <input type="text" class="task_edit-input" />              
+            </div>    
+            <button aria-label="Изменить" class="text__edit" type="button"></button>        
+        </div>
         `
     );
 }
 
 export default class TaskComponent {
-    constructor(taskName, taskClass) {
-        this.taskName = taskName;
-        this.taskClass = taskClass;
-        this.element = null;
+    constructor({task}) {
+        this.task = task;
     }
 
     getTemplate() {
-        return createTaskComponentTemplate(this.taskName, this.taskClass);
+        return createTaskComponentTemplate(this.task);
     }
 
     getElement() {
