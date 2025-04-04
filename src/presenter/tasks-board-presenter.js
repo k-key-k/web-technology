@@ -39,9 +39,8 @@ export default class TasksBoardPresenter {
                 render(taskComponent, tasksListcomponent.getElement());
             });
 
-            if (boardStatus === "trash") {
-                const clearTrashButtonComponent = new ClearTrashButtonComponent();
-                render(clearTrashButtonComponent, board);
+            if (boardStatus === "trash") {                
+                render(new ClearTrashButtonComponent(), board);
             }
                         
         });        
