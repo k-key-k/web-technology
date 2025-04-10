@@ -1,4 +1,5 @@
-body {
+/* базовая стилизация */
+body.board-app {
     font-family: Arial, sans-serif;
     background-color: #e3f2fd;
     margin: 0;
@@ -19,6 +20,7 @@ body {
     border: 0;
 }
 
+/* основной контент */
 .header {
     background: #007bff;
     color: white;
@@ -33,7 +35,7 @@ body {
     z-index: 10;
 }
 
-.main-container {
+.main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -43,7 +45,8 @@ body {
     margin-top: 60px;
 }
 
-.task-input {
+/* виджет ввода задач */
+.task-form {
     background: white;
     padding: 15px;
     border-radius: 10px;
@@ -56,34 +59,33 @@ body {
     transition: width 0.3s ease;
 }
 
-.input-container {
+.widget__inner {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-@media (min-width: 500px) {
-    .input-container input,
-    .input-container button {
-        flex: 1;
-    }
+.widget__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 499px) {
-    .input-container input,
-    .input-container button {
-        flex: 1 1 100%;
-    }
+/* Форма */
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.task-input input {
+.form__input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 20px;
 }
 
-.task-input button {
+.form__btn {
     background: #007bff;
     color: white;
     border: none;
@@ -93,7 +95,22 @@ body {
     font-size: 20px;
 }
 
-.task-sections {
+@media (max-width: 499px) {
+    .form__input,
+    .form__btn {
+        flex: 1 1 100%;
+    }
+}
+@media (min-width: 500px) {
+    .form__input,
+    .form__btn {
+        flex: 1;
+    }
+}
+
+
+/* доска с блоками задач */
+.board {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
@@ -101,59 +118,88 @@ body {
     margin-top: 20px;
 }
 
-.task-column {
-    padding: 10px;
-}
-
-.task-column h3 {
+/* блок с задачами */
+.board__column {    
     display: inline-block;
-    text-align: center;
-    padding: 10px 15px;
-    border-radius: 5px;
+    text-align: start;
     font-size: 20px;
     color: white;
+    margin-top: 30px;
+}
+
+/* Заголовок колонки */
+.task-column__title {
+    display: inline;
+    font-size: 22px;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.backlog h3 { background: #b0b0b0; color: #707070; }
-.in-progress h3 { background: #6ea8fe; color: #0056b3; }
-.done h3 { background: #76c893; color: #2e7d32; }
-.trash h3 { background: #e57373; color: #b71c1c; }
+/* Цвета колонок по модификатору */
+.task-column--backlog h3 {
+    background-color: #b0b0b0;
+    color: #707070;
+    padding: 10px;
+    border-radius: 5px;
+}
 
-ul {
+.task-column--in-progress h3 {
+    background-color: #6ea8fe;
+    color: #0056b3;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.task-column--done h3 {
+    background-color: #76c893;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.task-column--trash h3 {
+    background-color: #e57373;
+    color: #b71c1c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Список задач */
+.task-column__list {
     list-style: none;
-    padding: 0;
+    padding: 0;    
+    margin-top: 50px;
 }
 
-.taskboard__item {
+/* Элемент задачи */
+.task-column__item {
     padding: 25px;
-    margin: 20px 0px;
+    margin: 20px 0;
     border-radius: 8px;
+    background-color: #f5f5f5;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
     position: relative;
+    border-left: 5px solid transparent;
 }
 
-.taskboard__item.task--backlog {
-    background-color: #f5f5f5;
-    border-left: 5px solid #707070;
+/* Расцветка задач внутри колонки — по родительскому классу */
+.task-column--backlog .task-column__item {
+    border-left-color: #707070;
 }
 
-.taskboard__item.task--in-progress {
-    background-color: #f5f5f5;
-    border-left: 5px solid #0056b3;
+.task-column--in-progress .task-column__item {
+    border-left-color: #0056b3;
 }
 
-.taskboard__item.task--done {
-    background-color: #f5f5f5;
-    border-left: 5px solid #2e7d32;
+.task-column--done .task-column__item {
+    border-left-color: #2e7d32;
 }
 
-.taskboard__item.task--trash {
-    background-color: #f5f5f5;
-    border-left: 5px solid #b71c1c;
+.task-column--trash .task-column__item {
+    border-left-color: #b71c1c;
 }
 
+/* Контент задачи */
 .task__body {
     display: flex;
     align-items: center;
@@ -168,7 +214,8 @@ ul {
     flex-grow: 1;
 }
 
-.task_edit-input {
+/* Поле редактирования */
+.task__edit-input {
     width: 100%;
     margin-top: 5px;
     padding: 6px;
@@ -177,6 +224,7 @@ ul {
     display: none;
 }
 
+/* Кнопка редактирования */
 .text__edit {
     width: 20px;
     height: 20px;
@@ -190,10 +238,11 @@ ul {
     top: 35%;
 }
 
-.taskboard__item:hover .text__edit {
+.task-column__item:hover .text__edit {
     display: block;
 }
 
+/* Кнопка очистки */
 .clear-btn {
     display: block;
     width: 100%;
@@ -210,11 +259,12 @@ ul {
     background-color: #cc0000;
 }
 
+/* Адаптив */
 @media (max-width: 768px) {
-    .task-sections {
+    .board  {
         grid-template-columns: 1fr;
     }
-    .task-input {
+    .task-form {
         width: 90%;
     }
 }

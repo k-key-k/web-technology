@@ -1,35 +1,24 @@
-import { createElement } from "../framework/render.js";
+import { AbstractComponent } from "../framework/view/abstract-component.js";
 
 function createTaskTableComponentTemplate(boardName, boardClass) {
     return (
         `
-            <article class="task-column ${boardClass}">
-                <h3>${boardName}</h3>
+            <article class="board__column task-column task-column--${boardClass}">
+                <h3 class="task-column__title">${boardName}</h3>            
             </article>
         `
     );
 }
 
-export default class TaskTableComponent {
+export default class TaskTableComponent extends AbstractComponent {
     constructor(boardName, boardClass) {
+        super();
         this.boardName = boardName;
-        this.boardClass = boardClass;
-        this.element = null;
+        this.boardClass = boardClass;        
     }
 
-    getTemplate() {
+    get template() {
         return createTaskTableComponentTemplate(this.boardName, this.boardClass);
     }
 
-    getElement() {
-        if (!this.element) {
-            this.element = createElement(this.getTemplate());
-        }
-
-        return this.element;
-    }
-
-    removeElement() {
-        this.element = null;
-    }
 }
