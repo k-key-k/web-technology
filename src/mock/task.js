@@ -42,7 +42,7 @@ export const tasks = [
     {
         id: "9",
         title: "Стать рокстар попстар ;)",
-        status: "trash",
+        status: "backlog",
     },
 
 ]
