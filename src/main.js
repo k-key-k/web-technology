@@ -5,8 +5,8 @@ import { render, RenderPosition } from './framework/render.js';
 import TasksModel from './model/task-model.js';
 
 const bodyContainer = document.querySelector('.board-app');
-const formContainer = document.querySelector('.task-input');
-const tasksBoardContainer = document.querySelector('.task-sections');
+const formContainer = document.querySelector('.task-form');
+const tasksBoardContainer = document.querySelector('.board');
 
 const tasksModel = new TasksModel();
 const tasksBoardPresenter = new TasksBoardPresenter({
