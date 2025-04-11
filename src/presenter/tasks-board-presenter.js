@@ -8,21 +8,32 @@ import { render } from "../framework/render.js";
 
 export default class TasksBoardPresenter {    
     #boardContainer = null;
-    #tasksModel = null;        
-    #boardTasks = [];
+    #tasksModel = null;            
 
     constructor ({boardContainer, tasksModel}) {
         this.#boardContainer = boardContainer;
         this.#tasksModel = tasksModel;
+
+        this.#tasksModel.addObserver(this.#handleModelChange.bind(this));
     }
 
-    init() {
-        this.#boardTasks = [...this.#tasksModel.tasks];        
+    get tasks() {
+        return this.#tasksModel.tasks;
+    }
 
-        nameBoards.forEach((board) => {
-            this.#renderTasksList(board);
-        })
-          
+    init() {        
+        this.#renderBoard();
+    }
+
+    createTask() {
+        const taskTitle = document.querySelector('#add-task-name').value.trim();
+        if (!taskTitle) {
+            return;
+        }
+
+        this.#tasksModel.addTask(taskTitle);        
+
+        document.querySelector('#add-task-name').value = '';        
     }
 
     #renderTask(task, container) {
@@ -31,12 +42,18 @@ export default class TasksBoardPresenter {
         render(taskComponent, container);
     }
 
+    #renderBoard() {
+        nameBoards.forEach((board) => {
+            this.#renderTasksList(board);
+        })   
+    }
+
     #renderTasksList(board) {
         const column = this.#renderColumnContainer(board);
         const tasksListComponent = new TasksListComponent();
         render(tasksListComponent, column.element);
 
-        const tasks = this.#boardTasks.filter((task) => task.status === board.class);
+        const tasks = this.tasks.filter((task) => task.status === board.class);
 
         this.#renderTasksIntoList(tasks, tasksListComponent.element);
 
@@ -69,4 +86,12 @@ export default class TasksBoardPresenter {
         render(noTaskComponent, container);
     }
 
+    #clearBoard() {        
+        document.querySelector('.board').innerHTML = '';        
+    }
+
+    #handleModelChange() {
+        this.#clearBoard();
+        this.#renderBoard();
+    }
 }
