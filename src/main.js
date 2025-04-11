@@ -14,10 +14,17 @@ const tasksBoardPresenter = new TasksBoardPresenter({
     tasksModel,
 });
 
+const formAddTaskComponent = new FormAddTaskComponent({
+    onClick: handleNewTaskButtonClick
+});
+
+function handleNewTaskButtonClick() {
+    tasksBoardPresenter.createTask();
+}
+
 // render главной формы
 render(new HeaderComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
-render(new FormAddTaskComponent(), formContainer);
+render(formAddTaskComponent, formContainer);
 
 // render доски с задачами
 tasksBoardPresenter.init();
-
