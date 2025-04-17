@@ -77,7 +77,11 @@ export default class TasksBoardPresenter {
     }
 
     #renderClearButton(container) {
-        const clearButton = new ClearTrashButtonComponent();
+        const clearButton = new ClearTrashButtonComponent({
+            onClick: () => {
+                this.#tasksModel.clearTrash();
+            }
+        });
         render(clearButton, container);
     }
 
