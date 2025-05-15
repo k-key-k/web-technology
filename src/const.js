@@ -5,4 +5,17 @@ const nameBoards = [
     { name: "Корзина", class: "trash" }
 ];
 
-export {nameBoards}
+const UserActions = {
+    UPDATE_TASK: 'UPDATE_TASK',
+    ADD_TASK: 'ADD_TASK',
+    DELETE_TASK: 'DELETE_TASK'
+};
+
+const UpdateType = {
+    PATCH: 'PATCH',
+    MINOR: 'MINOR',
+    MAJOR: 'MAJOR',
+    INIT: 'INIT'
+};
+
+export { nameBoards, UserActions, UpdateType }
