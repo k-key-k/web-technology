@@ -273,6 +273,19 @@ body.board-app {
     background-color: #cc0000;
 }
 
+/* Элемент загрузки данных */
+.board__no-tasks {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);    
+}
+
 /* Адаптив */
 @media (max-width: 768px) {
     .board  {
